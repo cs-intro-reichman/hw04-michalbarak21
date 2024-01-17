@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class StringOps {
     ////////////////////////////////////////////////////////////
     //////                                               ///////
@@ -25,11 +27,21 @@ public class StringOps {
         
         /// Tests for capVowelsLowRest: 
         /// System.out.println(capVowelsLowRest("Hello World"));
-        System.out.println(capVowelsLowRest("One two tHRee world"));
+        /// System.out.println(capVowelsLowRest("One two tHRee world"));
         /// System.out.println(capVowelsLowRest("vowels are fun"));
         /// System.out.println(capVowelsLowRest("intro"));
         /// System.out.println(capVowelsLowRest("yellow"));
         
+
+        /// Tests for allIndexOf: 
+
+        /// System.out.println(Arrays.toString(allIndexOf("Hello World", 'l')));  // output: {2, 3, 9}
+        /// System.out.println(allIndexOf("Hello worLd",'l')); // output: {2, 3}
+        /// System.out.println(allIndexOf("Hello world",'o')); // output: {4, 7}
+        /// System.out.println(allIndexOf("Hello world",' ')); // output: {5}
+        /// System.out.println(allIndexOf("Hello world",'d')); // output: {10}
+        /// System.out.println(allIndexOf("MMMM",'M'));
+
     }
 
     public static String capVowelsLowRest (String string) {
@@ -77,12 +89,31 @@ public class StringOps {
     
 
     public static String camelCase (String string) {
-        // Write your code here:
+        /// While going over the 
         return "";
     }
 
-    public static int[] allIndexOf (String string, char chr) {
-        // Write your code here:
-        return new int[1];
+
+
+    public static int [] allIndexOf (String string, char chr) {
+        /// First run is to determine how big should the answer array should be
+        int num_of_idx = 0; 
+        for (int i = 0; i < string.length(); i++) {
+            if (string.charAt(i) == chr) {
+                num_of_idx++; 
+            }
+        }
+        int[] ans = new int [num_of_idx];   
+        /// In this run we check if the current char in the string matches the given char
+        /// If yes --> add current idx to the answer array
+        /// Else --> continue to the next character in the string
+        int idx_arr = 0;
+        for (int i = 0; i < string.length(); i++) {  
+            if ((char) string.charAt(i) == chr) {
+                ans[idx_arr] = i; 
+                idx_arr++;
+            }
+        }
+        return ans;
     }
 }

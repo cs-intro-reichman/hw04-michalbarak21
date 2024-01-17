@@ -35,7 +35,7 @@ public class StringOps {
         /// Tests for camelCase: 
         /// System.out.println(camelCase("Hello World"));
         /// System.out.println(camelCase("HELLO    world"));
-        /// System.out.println(camelCase("  tWo wordS  "));
+        /// System.out.println(camelCase(" tWo    wordS"));
         /// System.out.println(camelCase("world"));
         /// System.out.println(camelCase("   Intro to coMPUter sCIEncE   "));
 

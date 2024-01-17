@@ -5,7 +5,9 @@ public class ArrayOps {
         /// Tests for findMissingInt: 
         /// System.out.println(findMissingInt(new int [] {0, 1, 3})); 
         /// System.out.println(findMissingInt(new int [] {0, 1, 3, 2, 4, 6}));
+        /// System.out.println(findMissingInt(new int [] {1}));
         /// System.out.println(findMissingInt(new int [] {0}));
+        /// System.out.println(findMissingInt(new int [] {2, 3, 1}));
 
 
         /// Tests for secondMaxValue: 
@@ -44,19 +46,38 @@ public class ArrayOps {
         for (int i = 0; i < lenArray.length; i++) {
             lenArray[i] = 0; 
         }
+        /// a condition to cover the case that the given array is of length 1: 
+        if (array.length == 1) {
+            if (array[0] == 0) {
+                return 1; 
+            } else {
+                return 0; 
+            }
+        }
         /// Create the defualt item returned (in case user gives array {0})
-        int ans = 1;
+        int ans = 0;
         for (int i = 0; i < lenArray.length; i++) {
             /// Goes over each of the integers in the range and checks whether it can be found in the given array
             /// If yes --> changes the matching idx of lenArray to 1
             /// If no --> this must be our missing index, therefore we will change the value of ans to idx    
-            if (array.equals(i)) {
-                lenArray[i] = 1;  
+            if (inArray(array, i)) {
+                lenArray[i] = 1;
+                /// System.out.println("index " + i + " is in the array");  
             } else {
-                ans = i; 
+                ans = i;
+                /// System.out.println("index " + i + " is not in the array");
             }
         }
         return ans;
+    }
+
+    public static boolean inArray (int [] array, int num) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == num) {
+                return true; 
+            }
+        }
+        return false; 
     }
 
     public static int secondMaxValue(int [] array) {

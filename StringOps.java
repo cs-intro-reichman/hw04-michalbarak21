@@ -25,7 +25,7 @@ public class StringOps {
         
         /// Tests for capVowelsLowRest: 
         /// System.out.println(capVowelsLowRest("Hello World"));
-        /// System.out.println(capVowelsLowRest("One two tHRee world"));
+        System.out.println(capVowelsLowRest("One two tHRee world"));
         /// System.out.println(capVowelsLowRest("vowels are fun"));
         /// System.out.println(capVowelsLowRest("intro"));
         /// System.out.println(capVowelsLowRest("yellow"));
@@ -68,7 +68,7 @@ public class StringOps {
     public static boolean isUpperVowel (char a) {
         /// Checks whether a given character is a vowel or not. 
         /// If it is a vowel, returns the same vowel but in upper case
-        if (a == 'A' && a == 'E' && a == 'I' && a == 'O' && a == 'U') {
+        if (a == 'A' || a == 'E' || a == 'I' || a == 'O' || a == 'U') {
                 return true; 
             }
         return false;   

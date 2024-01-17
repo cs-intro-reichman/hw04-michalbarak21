@@ -32,15 +32,21 @@ public class StringOps {
         /// System.out.println(capVowelsLowRest("intro"));
         /// System.out.println(capVowelsLowRest("yellow"));
         
+        /// Tests for camelCase: 
+        /// System.out.println(camelCase("Hello World"));
+        /// System.out.println(camelCase("HELLO    world"));
+        /// System.out.println(camelCase("  tWo wordS  "));
+        /// System.out.println(camelCase("world"));
+        /// System.out.println(camelCase("   Intro to coMPUter sCIEncE   "));
 
         /// Tests for allIndexOf: 
 
         /// System.out.println(Arrays.toString(allIndexOf("Hello World", 'l')));  // output: {2, 3, 9}
-        /// System.out.println(allIndexOf("Hello worLd",'l')); // output: {2, 3}
-        /// System.out.println(allIndexOf("Hello world",'o')); // output: {4, 7}
-        /// System.out.println(allIndexOf("Hello world",' ')); // output: {5}
-        /// System.out.println(allIndexOf("Hello world",'d')); // output: {10}
-        /// System.out.println(allIndexOf("MMMM",'M'));
+        /// System.out.println(Arrays.toString(allIndexOf("Hello worLd",'l'))); // output: {2, 3}
+        /// System.out.println(Arrays.toString(allIndexOf("Hello world",'o'))); // output: {4, 7}
+        /// System.out.println(Arrays.toString(allIndexOf("Hello world",' '))); // output: {5}
+        /// System.out.println(Arrays.toString(allIndexOf("Hello world",'d'))); // output: {10}
+        /// System.out.println(Arrays.toString(allIndexOf("MMMM",'M')));
 
     }
 
@@ -89,8 +95,66 @@ public class StringOps {
     
 
     public static String camelCase (String string) {
-        /// While going over the 
-        return "";
+        /// First step we will find the index of the first word 
+        /// The first word is the only word that it's first letter isn't capitol, so we will deal with it outside of the loop
+        String ans = ""; 
+        int first_idx = firstLetterIdx(string);
+        ans = ans + lowerCase(string.charAt(first_idx)); 
+        for (int i = first_idx + 1; i < string.length(); i++) {
+            /// check 1 in the loop: is the current char a first letter of a new word? 
+            /// if it is --> uppercase and add to answer 
+            /// check 2 in the loop: is the current char a space?
+            /// if it is --> skip it 
+            /// if none of the above is true - it must be a char in the middle of a word
+            /// therefore we want to lowercase it
+            if (string.charAt(i-1) == ' ') {
+                ans = ans + upperCase(string.charAt(i));
+            } else if (string.charAt(i) == ' ') {
+                ans = ans; 
+            } else {
+                ans = ans + lowerCase(string.charAt(i)); 
+            }
+
+        }
+        return ans;
+    }
+
+    public static String clearSpaces (String string) {
+        String ans = ""; 
+        /// in this loop we get rid of all the spaces
+        for (int i = 0; i < string.length(); i++) {
+            if (string.charAt(i) != ' ') {
+                ans = ans + string.charAt(i); 
+            } 
+        }
+        return ans;
+    }
+
+    public static char upperCase (char i) {
+        /// gets a char object and returns it in uppercase
+        if (i >= 65 &&  i <= 90) {
+            return i; 
+        }
+        return (char) (i - 32); 
+    }
+
+    public static char lowerCase (char i) {
+        /// gets a char object and returns it in lowercase 
+        if (i >= 97 &&  i <= 122) {
+            return i; 
+        }
+        return (char) (i + 32); 
+    }
+
+    public static Integer firstLetterIdx (String string) {
+        /// Finds the index of the first character that isn't a space
+        int ans = 0; 
+        for (int i = 0; i < string.length(); i++ ) {
+            if (string.charAt(i) != ' ') {
+                return i; 
+            }
+        }
+        return ans; 
     }
 
 
